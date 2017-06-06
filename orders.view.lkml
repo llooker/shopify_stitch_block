@@ -714,31 +714,7 @@ view: orders {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-      id,
-      checkouts.billing_address__first_name,
-      checkouts.billing_address__last_name,
-      checkouts.billing_address__name,
-      checkouts.customer__default_address__country_name,
-      checkouts.customer__default_address__first_name,
-      checkouts.customer__default_address__last_name,
-      checkouts.customer__default_address__name,
-      checkouts.customer__first_name,
-      checkouts.customer__last_name,
-      checkouts.customer__last_order_name,
-      checkouts.id,
-      checkouts.name,
-      checkouts.shipping_address__first_name,
-      checkouts.shipping_address__last_name,
-      checkouts.shipping_address__name,
-      checkouts.source_name,
-      order_refunds.count,
-      order_refunds__order_adjustments.count,
-      order_refunds__transactions.count,
-      orders__fulfillments.count,
-      orders__refunds.count,
-      orders__refunds__order_adjustments.count,
-      orders__refunds__transactions.count,
-      transactions.count
+      id,name,order_number,orders__line_items.title,orders__line_items.vendor,total_order
     ]
   }
 }
