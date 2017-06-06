@@ -224,7 +224,12 @@ view: customers {
     value_format_name: largeamount
     drill_fields: [detail*]
   }
-
+  measure: avg_spent {
+    type: average
+    sql: ${total_spent_per_customer} ;;
+    value_format_name: largeamount
+    drill_fields: [detail*]
+  }
 
   # ----- Sets of fields for drilling ------
   set: detail {
