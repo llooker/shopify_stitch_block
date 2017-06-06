@@ -32,7 +32,10 @@ explore: orders {
 }
 
 explore:  checkouts {
-
+}
+explore:  transactions {
+}
+explore:  products {
 }
 
 #Large Dollars Amount format

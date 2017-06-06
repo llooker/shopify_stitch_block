@@ -714,7 +714,7 @@ view: orders {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-      id,name,order_number,orders__line_items.title,orders__line_items.vendor,total_order
+      id,customers.name,order_number,products.title,orders__line_items.vendor,total_order,shipping_city,shipping_country,products.product_image
     ]
   }
 }
