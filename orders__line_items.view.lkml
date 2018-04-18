@@ -50,6 +50,16 @@ view: orders__line_items {
     type: number
     sql: ${TABLE}._sdc_source_key_id ;;
   }
+  measure: first_purchase_count {
+    view_label: "Orders"
+    type: count_distinct
+    sql: ${order_id} ;;
+
+   # filters: {
+  #    field: order_facts.is_first_purchase
+   #   value: "Yes"
+    #}
+  }
 #
 #   dimension: _sdc_table_version {
 #     type: number
@@ -170,10 +180,11 @@ view: orders__line_items {
     type: number
     sql: ${TABLE}.price ;;
   }
+
   measure: avg_price {
     type: average
     sql: ${price} ;;
-    value_format: "0.00"
+    value_format: "$0.00"
   }
   dimension: product_exists {
     type: yesno
