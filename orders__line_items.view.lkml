@@ -173,6 +173,7 @@ view: orders__line_items {
   measure: avg_price {
     type: average
     sql: ${price} ;;
+    value_format: "0.00"
   }
   dimension: product_exists {
     type: yesno
