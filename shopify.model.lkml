@@ -1,4 +1,4 @@
-connection: "shippo_inkbox_client_sample"
+connection: "shopify_data"
 
 # include all the views
 include: "*.view"
