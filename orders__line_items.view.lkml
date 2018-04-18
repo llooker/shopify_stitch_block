@@ -170,7 +170,10 @@ view: orders__line_items {
     type: number
     sql: ${TABLE}.price ;;
   }
-
+  measure: avg_price {
+    type: average
+    sql: ${price} ;;
+  }
   dimension: product_exists {
     type: yesno
     sql: ${TABLE}.product_exists ;;
