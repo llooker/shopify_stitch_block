@@ -1,5 +1,5 @@
 view: transactions {
-  sql_table_name: shopify_stitch.transactions ;;
+  sql_table_name: shopify.transactions ;;
 
   dimension: receipt__parent_transaction_id {
     primary_key: yes

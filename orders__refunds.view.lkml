@@ -1,5 +1,5 @@
 view: orders__refunds {
-  sql_table_name: shopify_stitch.orders__refunds ;;
+  sql_table_name: shopify.orders__refunds ;;
 
   dimension: id {
     primary_key: yes

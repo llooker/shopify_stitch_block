@@ -1,6 +1,6 @@
 connection: "shopify_data"
 
-# include all the views
+# include all the views #
 include: "*.view"
 
 # include all the dashboards
@@ -31,12 +31,12 @@ explore: orders {
 
 }
 
-explore:  checkouts {
-}
-explore:  transactions {
-}
-explore:  products {
-}
+# explore:  checkouts {
+# }
+# explore:  transactions {
+# }
+# explore:  products {
+# }
 
 #Large Dollars Amount format
 named_value_format: largeamount {

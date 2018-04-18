@@ -1,5 +1,5 @@
 view: checkouts {
-  sql_table_name: shopify_stitch.checkouts ;;
+  sql_table_name: shopify.checkouts ;;
 
   dimension: id {
     primary_key: yes

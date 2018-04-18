@@ -1,5 +1,5 @@
 view: orders {
-  sql_table_name: shopify_stitch.orders ;;
+  sql_table_name: shopify.orders ;;
 
   dimension: id {
     primary_key: yes
@@ -212,17 +212,17 @@ view: orders {
     type: yesno
 #   hidden: yes
     sql:
-    (EXTRACT(DAY FROM ${created_date}) < EXTRACT(DAY FROM GETDATE())
+    (EXTRACT(DAY FROM ${created_date}) < EXTRACT(DAY FROM current_date)
       OR
       (
-        EXTRACT(DAY FROM ${created_date}) = EXTRACT(DAY FROM GETDATE()) AND
-        EXTRACT(HOUR FROM ${created_date}) < EXTRACT(HOUR FROM GETDATE())
+        EXTRACT(DAY FROM ${created_date}) = EXTRACT(DAY FROM current_date) AND
+        EXTRACT(HOUR FROM ${created_date}) < EXTRACT(HOUR FROM current_date)
       )
       OR
       (
-        EXTRACT(DAY FROM ${created_date}) = EXTRACT(DAY FROM GETDATE()) AND
-        EXTRACT(HOUR FROM ${created_date}) <= EXTRACT(HOUR FROM GETDATE()) AND
-        EXTRACT(MINUTE FROM ${created_date}) < EXTRACT(MINUTE FROM GETDATE())
+        EXTRACT(DAY FROM ${created_date}) = EXTRACT(DAY FROM current_date) AND
+        EXTRACT(HOUR FROM ${created_date}) <= EXTRACT(HOUR FROM current_date) AND
+        EXTRACT(MINUTE FROM ${created_date}) < EXTRACT(MINUTE FROM current_date)
       )
     );;
 
@@ -232,12 +232,12 @@ view: orders {
     sql: ${TABLE}.currency ;;
   }
 
-  dimension: customer__accepts_marketing {
+  dimension: customer_accepts_marketing {
     type: yesno
     sql: ${TABLE}.customer__accepts_marketing ;;
   }
 
-  dimension_group: customer__created {
+  dimension_group: customer_created {
     type: time
     timeframes: [
       raw,
@@ -251,40 +251,35 @@ view: orders {
     sql: ${TABLE}.customer__created_at ;;
   }
 
-#   dimension: customer__default_address__address1 {
-#     type: string
-#     sql: ${TABLE}.customer__default_address__address1 ;;
-#   }
-#
-#   dimension: customer__default_address__address2 {
-#     type: string
-#     sql: ${TABLE}.customer__default_address__address2 ;;
-#   }
-#
-#   dimension: customer__default_address__city {
-#     type: string
-#     sql: ${TABLE}.customer__default_address__city ;;
-#   }
-#
-#   dimension: customer__default_address__company {
-#     type: string
-#     sql: ${TABLE}.customer__default_address__company ;;
-#   }
-#
-#   dimension: customer__default_address__country {
-#     type: string
-#     sql: ${TABLE}.customer__default_address__country ;;
-#   }
-#
-#   dimension: customer__default_address__country_code {
-#     type: string
-#     sql: ${TABLE}.customer__default_address__country_code ;;
-#   }
-#
-#   dimension: customer__default_address__country_name {
-#     type: string
-#     sql: ${TABLE}.customer__default_address__country_name ;;
-#   }
+  dimension: customer_default_address__address1 {
+    type: string
+    sql: ${TABLE}.customer__default_address__address1 ;;
+  }
+
+  dimension: customer_default_address__city {
+    type: string
+    sql: ${TABLE}.customer__default_address__city ;;
+  }
+
+  dimension: customer_default_address__company {
+    type: string
+    sql: ${TABLE}.customer__default_address__company ;;
+  }
+
+  dimension: customer_default_address__country {
+    type: string
+    sql: ${TABLE}.customer__default_address__country ;;
+  }
+
+  dimension: customer_default_address__country_code {
+    type: string
+    sql: ${TABLE}.customer__default_address__country_code ;;
+  }
+
+  dimension: customer_default_address__country_name {
+    type: string
+    sql: ${TABLE}.customer__default_address__country_name ;;
+  }
 #
 #   dimension: customer__default_address__default {
 #     type: yesno
@@ -587,8 +582,8 @@ view: orders {
   }
   dimension:  shipping_location {
     type: location
-    sql_latitude: round(${shipping_address__latitude},0) ;;
-    sql_longitude: round(${shipping_address__longitude},0) ;;
+    sql_latitude: round(cast(${shipping_address__latitude} as int),3)  ;;
+    sql_longitude: round(cast(${shipping_address__longitude} as int),3) ;;
   }
 
   dimension: shipping_address__name {
