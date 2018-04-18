@@ -199,6 +199,7 @@ view: orders {
   dimension_group: created {
     type: time
     timeframes: [
+      raw,
       date,
       week,
       month,
@@ -208,6 +209,21 @@ view: orders {
     ]
     sql: ${TABLE}.created_at ;;
   }
+
+  dimension: reporting_period {
+    group_label: "Order Date"
+    sql: CASE
+      WHEN date_part('year',${created_raw}) = date_part('year',current_date)
+      AND ${created_raw} < CURRENT_DATE
+      THEN 'This year to date'
+
+      WHEN date_part('year',${created_raw} + 1 = date_part('year',current_date)
+      AND date_part('dayofyear',${created_raw} <= date_part('dayofyear',current_date)
+      THEN 'Last year to Date'
+      END
+      ;;
+  }
+
   dimension: is_before_mtd {
     type: yesno
 #   hidden: yes

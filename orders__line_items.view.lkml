@@ -121,6 +121,8 @@ view: orders__line_items {
 #     sql: ${TABLE}.fulfillment_status ;;
 #   }
 
+
+
   dimension: gift_card {
     type: yesno
     sql: ${TABLE}.gift_card ;;
