@@ -217,9 +217,9 @@ view: orders {
       AND ${created_raw} < CURRENT_DATE
       THEN 'This year to date'
 
-      WHEN date_part('year',${created_raw} + 1 = date_part('year',current_date)
-      AND date_part('dayofyear',${created_raw} <= date_part('dayofyear',current_date)
-      THEN 'Last year to Date'
+      WHEN date_part('year',${created_raw}) + 1 = date_part('year',current_date)
+      AND date_part('DOY',${created_raw}) <= date_part('DOY',current_date)
+      THEN 'Last Year to Date'
       END
       ;;
   }
