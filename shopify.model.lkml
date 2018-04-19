@@ -28,6 +28,13 @@ explore: orders {
       relationship: many_to_one
     }
 
+    join: customer_order_facts {
+      view_label: "Customers"
+      sql_on: ${customers._id} = ${customer_order_facts.customer_id} ;;
+      type: left_outer
+      relationship: many_to_one
+    }
+
 
 }
 
