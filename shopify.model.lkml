@@ -1,4 +1,4 @@
-connection: "shopify_data"
+connection: "data_warehouse"
 
 # include all the views #
 include: "*.view"
