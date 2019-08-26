@@ -19,7 +19,7 @@ explore: orders {
       relationship: one_to_many
     }
     join: products {
-      sql_on: ${orders__line_items.product_id} = ${products._id};;
+      sql_on: ${orders__line_items.product_id} = ${products.id};;
       relationship: one_to_one
     }
     join: customers {
